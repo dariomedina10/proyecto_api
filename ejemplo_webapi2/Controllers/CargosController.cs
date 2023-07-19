@@ -35,6 +35,17 @@ namespace ejemplo_webapi2.Controllers
 
         }
 
+        [HttpPost]
+
+        public IHttpActionResult AgregarCargo([FromBody] Cargos cargo)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+
+        }
+
     }
 
 }
