@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1da7b99366c34f0cba968d6f279bde8c" Name="Diagram1">
+        <EntityTypeShape EntityType="Meru_LinkModel.auditoria_logs" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.candado" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.Cargos" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.Departamentos" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.dia_festivos" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.dias_especiales" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.empleado_contactos" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.Empleados" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.eventos_especiales" Width="1.5" PointX="11.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.horario_asignar_observaciones" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.horarios" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.locker_caballeros" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.locker_damas" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.migrations" Width="1.5" PointX="7.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.model_has_permissions" Width="1.5" PointX="14" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.model_has_roles" Width="1.5" PointX="16.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.permisos_descripcion" Width="1.5" PointX="14" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.permissions" Width="1.5" PointX="11.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.roles" Width="1.5" PointX="14" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.sub_departamentos" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.Usuarios" Width="1.5" PointX="7.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.empleado_horarios" Width="1.5" PointX="11.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Meru_LinkModel.Temp" Width="1.5" PointX="13.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="Meru_LinkModel.auditoria_logs_usuario_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="Meru_LinkModel.candado_locker_caballero_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="Meru_LinkModel.candado_locker_dama_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="Meru_LinkModel.cargos_departamento_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="Meru_LinkModel.empleados_cargo_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="Meru_LinkModel.FK__Empleados__Cargo__15460CD7" ManuallyRouted="false" />
+        <AssociationConnector Association="Meru_LinkModel.empleados_departamento_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="Meru_LinkModel.FK__Empleados__Depar__163A3110" ManuallyRouted="false" />
+        <AssociationConnector Association="Meru_LinkModel.horarios_departamento_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="Meru_LinkModel.sub_departamentos_departamento_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="Meru_LinkModel.empleados_subdepartamento_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="Meru_LinkModel.FK__Empleados__SubDe__172E5549" ManuallyRouted="false" />
+        <AssociationConnector Association="Meru_LinkModel.FK__Usuarios__Emplea__19169DBB" ManuallyRouted="false" />
+        <AssociationConnector Association="Meru_LinkModel.model_has_permissions_permission_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="Meru_LinkModel.model_has_roles_role_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="Meru_LinkModel.permisos_descripcion_permissions_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="Meru_LinkModel.role_has_permissions" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

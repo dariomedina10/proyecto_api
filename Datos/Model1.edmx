@@ -1,0 +1,1899 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Meru_LinkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="auditoria_logs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuario_id" Type="bigint" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ruta" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="candado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="serial" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="combinacion" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="disponible" Type="bit" Nullable="false" />
+          <Property Name="Locker_Caballero_id" Type="bigint" Nullable="false" />
+          <Property Name="Locker_Dama_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cargos">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="bigint" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="255" />
+          <Property Name="Departamento_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Departamentos">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dia_festivos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dia" Type="int" Nullable="false" />
+          <Property Name="mes" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="tipo" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dias_especiales">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dia" Type="int" Nullable="false" />
+          <Property Name="mes" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="empleado_contactos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombres" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="apellidos" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="parentesco" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefono" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="direccion" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="Empleado_id" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Meru_Link.dbo.empleado_horarios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="empleado_horarios">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="codigo_asignar" />
+            <PropertyRef Name="cedula_empleado" />
+            <PropertyRef Name="mes" />
+            <PropertyRef Name="anio" />
+            <PropertyRef Name="quincena" />
+            <PropertyRef Name="asignado" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo_asignar" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="cedula_empleado" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="mes" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="anio" Type="int" Nullable="false" />
+          <Property Name="quincena" Type="int" Nullable="false" />
+          <Property Name="D1" Type="nvarchar" MaxLength="255" />
+          <Property Name="D2" Type="nvarchar" MaxLength="255" />
+          <Property Name="D3" Type="nvarchar" MaxLength="255" />
+          <Property Name="D4" Type="nvarchar" MaxLength="255" />
+          <Property Name="D5" Type="nvarchar" MaxLength="255" />
+          <Property Name="D6" Type="nvarchar" MaxLength="255" />
+          <Property Name="D7" Type="nvarchar" MaxLength="255" />
+          <Property Name="D8" Type="nvarchar" MaxLength="255" />
+          <Property Name="D9" Type="nvarchar" MaxLength="255" />
+          <Property Name="D10" Type="nvarchar" MaxLength="255" />
+          <Property Name="D11" Type="nvarchar" MaxLength="255" />
+          <Property Name="D12" Type="nvarchar" MaxLength="255" />
+          <Property Name="D13" Type="nvarchar" MaxLength="255" />
+          <Property Name="D14" Type="nvarchar" MaxLength="255" />
+          <Property Name="D15" Type="nvarchar" MaxLength="255" />
+          <Property Name="D16" Type="nvarchar" MaxLength="255" />
+          <Property Name="asignado" Type="bit" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="cedula" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="cedula" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="primer_nombre" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="primer_apellido" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="segundo_nombre" Type="nvarchar" MaxLength="30" />
+          <Property Name="segundo_apellido" Type="nvarchar" MaxLength="30" />
+          <Property Name="fecha_nac" Type="date" Nullable="false" />
+          <Property Name="lugar_nac" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="edad" Type="int" Nullable="false" />
+          <Property Name="nacionalidad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sexo" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="estado_civil" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="grupo_sanguineo" Type="nvarchar" MaxLength="10" />
+          <Property Name="telefono_movil" Type="nvarchar" MaxLength="20" />
+          <Property Name="telefono_hab" Type="nvarchar" MaxLength="20" />
+          <Property Name="direccion_hab" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="e_mail" Type="nvarchar" MaxLength="255" />
+          <Property Name="fecha_ingreso" Type="date" Nullable="false" />
+          <Property Name="nombreimagen" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="Departamento_id" Type="bigint" Nullable="false" />
+          <Property Name="SubDepartamento_id" Type="bigint" Nullable="false" />
+          <Property Name="Cargo_id" Type="bigint" Nullable="false" />
+          <Property Name="candado_serial" Type="nvarchar" MaxLength="255" />
+          <Property Name="inactivo" Type="bit" Nullable="false" />
+          <Property Name="usamerulink" Type="bit" Nullable="false" />
+          <Property Name="usaHID" Type="bit" Nullable="false" />
+          <Property Name="usaLocker" Type="bit" Nullable="false" />
+          <Property Name="Locker_id" Type="bigint" Nullable="false" />
+          <Property Name="usatransportemeru" Type="bit" Nullable="false" />
+          <Property Name="destino" Type="nvarchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="eventos_especiales">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="fecha_inicio" Type="date" Nullable="false" />
+          <Property Name="fecha_fin" Type="date" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="horario_asignar_observaciones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo_asignar" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="observaciones" Type="nvarchar(max)" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="horarios">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tipo" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="hora_entrada" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="hora_salida" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="periodo_descanso" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="periodo_activo" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="periodo_total" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="permitir_salida" Type="bit" Nullable="false" />
+          <Property Name="remarcaje" Type="bit" Nullable="false" />
+          <Property Name="observacion" Type="nvarchar" MaxLength="100" />
+          <Property Name="disponible" Type="bit" Nullable="false" />
+          <Property Name="Departamento_id" Type="bigint" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+          <Property Name="nocturno" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="locker_caballeros">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="disponible" Type="bit" Nullable="false" />
+          <Property Name="candadoAsignado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="locker_damas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="disponible" Type="bit" Nullable="false" />
+          <Property Name="candadoAsignado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="migrations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="migration" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="batch" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="model_has_permissions">
+          <Key>
+            <PropertyRef Name="permission_id" />
+            <PropertyRef Name="model_type" />
+            <PropertyRef Name="model_id" />
+          </Key>
+          <Property Name="permission_id" Type="int" Nullable="false" />
+          <Property Name="model_type" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="model_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="model_has_roles">
+          <Key>
+            <PropertyRef Name="role_id" />
+            <PropertyRef Name="model_type" />
+            <PropertyRef Name="model_id" />
+          </Key>
+          <Property Name="role_id" Type="int" Nullable="false" />
+          <Property Name="model_type" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="model_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="permisos_descripcion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="permissions_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="permissions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="guard_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="role_has_permissions">
+          <Key>
+            <PropertyRef Name="permission_id" />
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="permission_id" Type="int" Nullable="false" />
+          <Property Name="role_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="guard_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sub_departamentos">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="bigint" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Departamento_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Meru_Link.dbo.Temp' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Temp">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="cedula" />
+            <PropertyRef Name="primer_nombre" />
+            <PropertyRef Name="primer_apellido" />
+            <PropertyRef Name="fecha_nac" />
+            <PropertyRef Name="lugar_nac" />
+            <PropertyRef Name="edad" />
+            <PropertyRef Name="nacionalidad" />
+            <PropertyRef Name="sexo" />
+            <PropertyRef Name="estado_civil" />
+            <PropertyRef Name="direccion_hab" />
+            <PropertyRef Name="fecha_ingreso" />
+            <PropertyRef Name="nombreimagen" />
+            <PropertyRef Name="Departamento_id" />
+            <PropertyRef Name="SubDepartamento_id" />
+            <PropertyRef Name="Cargo_id" />
+            <PropertyRef Name="inactivo" />
+            <PropertyRef Name="usamerulink" />
+            <PropertyRef Name="usaHID" />
+            <PropertyRef Name="usaLocker" />
+            <PropertyRef Name="Locker_id" />
+            <PropertyRef Name="usatransportemeru" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="cedula" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="primer_nombre" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="primer_apellido" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="segundo_nombre" Type="nvarchar" MaxLength="30" />
+          <Property Name="segundo_apellido" Type="nvarchar" MaxLength="30" />
+          <Property Name="fecha_nac" Type="date" Nullable="false" />
+          <Property Name="lugar_nac" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="edad" Type="int" Nullable="false" />
+          <Property Name="nacionalidad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sexo" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="estado_civil" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="grupo_sanguineo" Type="nvarchar" MaxLength="10" />
+          <Property Name="telefono_movil" Type="nvarchar" MaxLength="20" />
+          <Property Name="telefono_hab" Type="nvarchar" MaxLength="20" />
+          <Property Name="direccion_hab" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="e_mail" Type="nvarchar" MaxLength="255" />
+          <Property Name="fecha_ingreso" Type="date" Nullable="false" />
+          <Property Name="nombreimagen" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="Departamento_id" Type="bigint" Nullable="false" />
+          <Property Name="SubDepartamento_id" Type="bigint" Nullable="false" />
+          <Property Name="Cargo_id" Type="bigint" Nullable="false" />
+          <Property Name="candado_serial" Type="nvarchar" MaxLength="255" />
+          <Property Name="inactivo" Type="bit" Nullable="false" />
+          <Property Name="usamerulink" Type="bit" Nullable="false" />
+          <Property Name="usaHID" Type="bit" Nullable="false" />
+          <Property Name="usaLocker" Type="bit" Nullable="false" />
+          <Property Name="Locker_id" Type="bigint" Nullable="false" />
+          <Property Name="usatransportemeru" Type="bit" Nullable="false" />
+          <Property Name="destino" Type="nvarchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreusuario" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="remember_token" Type="nvarchar" MaxLength="100" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+          <Property Name="prox_inicio" Type="bit" Nullable="false" />
+          <Property Name="Empleado_id" Type="nvarchar" MaxLength="9" Nullable="false" />
+        </EntityType>
+        <Association Name="auditoria_logs_usuario_id_foreign">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="auditoria_logs" Type="Self.auditoria_logs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="auditoria_logs">
+              <PropertyRef Name="usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="candado_locker_caballero_id_foreign">
+          <End Role="locker_caballeros" Type="Self.locker_caballeros" Multiplicity="1" />
+          <End Role="candado" Type="Self.candado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="locker_caballeros">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="candado">
+              <PropertyRef Name="Locker_Caballero_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="candado_locker_dama_id_foreign">
+          <End Role="locker_damas" Type="Self.locker_damas" Multiplicity="1" />
+          <End Role="candado" Type="Self.candado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="locker_damas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="candado">
+              <PropertyRef Name="Locker_Dama_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cargos_departamento_id_foreign">
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Cargos" Type="Self.Cargos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Cargos">
+              <PropertyRef Name="Departamento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="empleados_cargo_id_foreign">
+          <End Role="Cargos" Type="Self.Cargos" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cargos">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Cargo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="empleados_departamento_id_foreign">
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Departamento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="empleados_subdepartamento_id_foreign">
+          <End Role="sub_departamentos" Type="Self.sub_departamentos" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sub_departamentos">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="SubDepartamento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleados__Cargo__15460CD7">
+          <End Role="Cargos" Type="Self.Cargos" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cargos">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Cargo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleados__Depar__163A3110">
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Departamento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleados__SubDe__172E5549">
+          <End Role="sub_departamentos" Type="Self.sub_departamentos" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sub_departamentos">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="SubDepartamento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuarios__Emplea__19169DBB">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="cedula" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="Empleado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="horarios_departamento_id_foreign">
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
+          <End Role="horarios" Type="Self.horarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="horarios">
+              <PropertyRef Name="Departamento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="model_has_permissions_permission_id_foreign">
+          <End Role="permissions" Type="Self.permissions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="model_has_permissions" Type="Self.model_has_permissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="permissions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="model_has_permissions">
+              <PropertyRef Name="permission_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="model_has_roles_role_id_foreign">
+          <End Role="roles" Type="Self.roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="model_has_roles" Type="Self.model_has_roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="model_has_roles">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="permisos_descripcion_permissions_id_foreign">
+          <End Role="permissions" Type="Self.permissions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="permisos_descripcion" Type="Self.permisos_descripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="permissions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="permisos_descripcion">
+              <PropertyRef Name="permissions_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="role_has_permissions_permission_id_foreign">
+          <End Role="permissions" Type="Self.permissions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="role_has_permissions" Type="Self.role_has_permissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="permissions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="role_has_permissions">
+              <PropertyRef Name="permission_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="role_has_permissions_role_id_foreign">
+          <End Role="roles" Type="Self.roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="role_has_permissions" Type="Self.role_has_permissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="role_has_permissions">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="sub_departamentos_departamento_id_foreign">
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sub_departamentos" Type="Self.sub_departamentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="sub_departamentos">
+              <PropertyRef Name="Departamento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Meru_LinkModelStoreContainer">
+          <EntitySet Name="auditoria_logs" EntityType="Self.auditoria_logs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="candado" EntityType="Self.candado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cargos" EntityType="Self.Cargos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dia_festivos" EntityType="Self.dia_festivos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dias_especiales" EntityType="Self.dias_especiales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="empleado_contactos" EntityType="Self.empleado_contactos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eventos_especiales" EntityType="Self.eventos_especiales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="horario_asignar_observaciones" EntityType="Self.horario_asignar_observaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="horarios" EntityType="Self.horarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="locker_caballeros" EntityType="Self.locker_caballeros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="locker_damas" EntityType="Self.locker_damas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="migrations" EntityType="Self.migrations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="model_has_permissions" EntityType="Self.model_has_permissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="model_has_roles" EntityType="Self.model_has_roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="permisos_descripcion" EntityType="Self.permisos_descripcion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="permissions" EntityType="Self.permissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="role_has_permissions" EntityType="Self.role_has_permissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sub_departamentos" EntityType="Self.sub_departamentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="empleado_horarios" EntityType="Self.empleado_horarios" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [empleado_horarios].[id] AS [id], 
+    [empleado_horarios].[codigo_asignar] AS [codigo_asignar], 
+    [empleado_horarios].[cedula_empleado] AS [cedula_empleado], 
+    [empleado_horarios].[mes] AS [mes], 
+    [empleado_horarios].[anio] AS [anio], 
+    [empleado_horarios].[quincena] AS [quincena], 
+    [empleado_horarios].[D1] AS [D1], 
+    [empleado_horarios].[D2] AS [D2], 
+    [empleado_horarios].[D3] AS [D3], 
+    [empleado_horarios].[D4] AS [D4], 
+    [empleado_horarios].[D5] AS [D5], 
+    [empleado_horarios].[D6] AS [D6], 
+    [empleado_horarios].[D7] AS [D7], 
+    [empleado_horarios].[D8] AS [D8], 
+    [empleado_horarios].[D9] AS [D9], 
+    [empleado_horarios].[D10] AS [D10], 
+    [empleado_horarios].[D11] AS [D11], 
+    [empleado_horarios].[D12] AS [D12], 
+    [empleado_horarios].[D13] AS [D13], 
+    [empleado_horarios].[D14] AS [D14], 
+    [empleado_horarios].[D15] AS [D15], 
+    [empleado_horarios].[D16] AS [D16], 
+    [empleado_horarios].[asignado] AS [asignado], 
+    [empleado_horarios].[created_at] AS [created_at], 
+    [empleado_horarios].[updated_at] AS [updated_at]
+    FROM [dbo].[empleado_horarios] AS [empleado_horarios]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Temp" EntityType="Self.Temp" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Temp].[id] AS [id], 
+    [Temp].[cedula] AS [cedula], 
+    [Temp].[primer_nombre] AS [primer_nombre], 
+    [Temp].[primer_apellido] AS [primer_apellido], 
+    [Temp].[segundo_nombre] AS [segundo_nombre], 
+    [Temp].[segundo_apellido] AS [segundo_apellido], 
+    [Temp].[fecha_nac] AS [fecha_nac], 
+    [Temp].[lugar_nac] AS [lugar_nac], 
+    [Temp].[edad] AS [edad], 
+    [Temp].[nacionalidad] AS [nacionalidad], 
+    [Temp].[sexo] AS [sexo], 
+    [Temp].[estado_civil] AS [estado_civil], 
+    [Temp].[grupo_sanguineo] AS [grupo_sanguineo], 
+    [Temp].[telefono_movil] AS [telefono_movil], 
+    [Temp].[telefono_hab] AS [telefono_hab], 
+    [Temp].[direccion_hab] AS [direccion_hab], 
+    [Temp].[e_mail] AS [e_mail], 
+    [Temp].[fecha_ingreso] AS [fecha_ingreso], 
+    [Temp].[nombreimagen] AS [nombreimagen], 
+    [Temp].[Departamento_id] AS [Departamento_id], 
+    [Temp].[SubDepartamento_id] AS [SubDepartamento_id], 
+    [Temp].[Cargo_id] AS [Cargo_id], 
+    [Temp].[candado_serial] AS [candado_serial], 
+    [Temp].[inactivo] AS [inactivo], 
+    [Temp].[usamerulink] AS [usamerulink], 
+    [Temp].[usaHID] AS [usaHID], 
+    [Temp].[usaLocker] AS [usaLocker], 
+    [Temp].[Locker_id] AS [Locker_id], 
+    [Temp].[usatransportemeru] AS [usatransportemeru], 
+    [Temp].[destino] AS [destino], 
+    [Temp].[created_at] AS [created_at], 
+    [Temp].[updated_at] AS [updated_at]
+    FROM [dbo].[Temp] AS [Temp]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="auditoria_logs_usuario_id_foreign" Association="Self.auditoria_logs_usuario_id_foreign">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="auditoria_logs" EntitySet="auditoria_logs" />
+          </AssociationSet>
+          <AssociationSet Name="candado_locker_caballero_id_foreign" Association="Self.candado_locker_caballero_id_foreign">
+            <End Role="locker_caballeros" EntitySet="locker_caballeros" />
+            <End Role="candado" EntitySet="candado" />
+          </AssociationSet>
+          <AssociationSet Name="candado_locker_dama_id_foreign" Association="Self.candado_locker_dama_id_foreign">
+            <End Role="locker_damas" EntitySet="locker_damas" />
+            <End Role="candado" EntitySet="candado" />
+          </AssociationSet>
+          <AssociationSet Name="cargos_departamento_id_foreign" Association="Self.cargos_departamento_id_foreign">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="Cargos" EntitySet="Cargos" />
+          </AssociationSet>
+          <AssociationSet Name="empleados_cargo_id_foreign" Association="Self.empleados_cargo_id_foreign">
+            <End Role="Cargos" EntitySet="Cargos" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="empleados_departamento_id_foreign" Association="Self.empleados_departamento_id_foreign">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="empleados_subdepartamento_id_foreign" Association="Self.empleados_subdepartamento_id_foreign">
+            <End Role="sub_departamentos" EntitySet="sub_departamentos" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleados__Cargo__15460CD7" Association="Self.FK__Empleados__Cargo__15460CD7">
+            <End Role="Cargos" EntitySet="Cargos" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleados__Depar__163A3110" Association="Self.FK__Empleados__Depar__163A3110">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleados__SubDe__172E5549" Association="Self.FK__Empleados__SubDe__172E5549">
+            <End Role="sub_departamentos" EntitySet="sub_departamentos" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__Emplea__19169DBB" Association="Self.FK__Usuarios__Emplea__19169DBB">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="horarios_departamento_id_foreign" Association="Self.horarios_departamento_id_foreign">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="horarios" EntitySet="horarios" />
+          </AssociationSet>
+          <AssociationSet Name="model_has_permissions_permission_id_foreign" Association="Self.model_has_permissions_permission_id_foreign">
+            <End Role="permissions" EntitySet="permissions" />
+            <End Role="model_has_permissions" EntitySet="model_has_permissions" />
+          </AssociationSet>
+          <AssociationSet Name="model_has_roles_role_id_foreign" Association="Self.model_has_roles_role_id_foreign">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="model_has_roles" EntitySet="model_has_roles" />
+          </AssociationSet>
+          <AssociationSet Name="permisos_descripcion_permissions_id_foreign" Association="Self.permisos_descripcion_permissions_id_foreign">
+            <End Role="permissions" EntitySet="permissions" />
+            <End Role="permisos_descripcion" EntitySet="permisos_descripcion" />
+          </AssociationSet>
+          <AssociationSet Name="role_has_permissions_permission_id_foreign" Association="Self.role_has_permissions_permission_id_foreign">
+            <End Role="permissions" EntitySet="permissions" />
+            <End Role="role_has_permissions" EntitySet="role_has_permissions" />
+          </AssociationSet>
+          <AssociationSet Name="role_has_permissions_role_id_foreign" Association="Self.role_has_permissions_role_id_foreign">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="role_has_permissions" EntitySet="role_has_permissions" />
+          </AssociationSet>
+          <AssociationSet Name="sub_departamentos_departamento_id_foreign" Association="Self.sub_departamentos_departamento_id_foreign">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="sub_departamentos" EntitySet="sub_departamentos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Meru_LinkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="auditoria_logs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario_id" Type="Int64" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ruta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.auditoria_logs_usuario_id_foreign" FromRole="auditoria_logs" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="candado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="serial" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="combinacion" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="disponible" Type="Boolean" Nullable="false" />
+          <Property Name="Locker_Caballero_id" Type="Int64" Nullable="false" />
+          <Property Name="Locker_Dama_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="locker_caballeros" Relationship="Self.candado_locker_caballero_id_foreign" FromRole="candado" ToRole="locker_caballeros" />
+          <NavigationProperty Name="locker_damas" Relationship="Self.candado_locker_dama_id_foreign" FromRole="candado" ToRole="locker_damas" />
+        </EntityType>
+        <EntityType Name="Cargos">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int64" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Departamento_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Departamentos" Relationship="Self.cargos_departamento_id_foreign" FromRole="Cargos" ToRole="Departamentos" />
+          <NavigationProperty Name="Empleados" Relationship="Self.empleados_cargo_id_foreign" FromRole="Cargos" ToRole="Empleados" />
+          <NavigationProperty Name="Empleados1" Relationship="Self.FK__Empleados__Cargo__15460CD7" FromRole="Cargos" ToRole="Empleados" />
+        </EntityType>
+        <EntityType Name="Departamentos">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cargos" Relationship="Self.cargos_departamento_id_foreign" FromRole="Departamentos" ToRole="Cargos" />
+          <NavigationProperty Name="Empleados" Relationship="Self.empleados_departamento_id_foreign" FromRole="Departamentos" ToRole="Empleados" />
+          <NavigationProperty Name="Empleados1" Relationship="Self.FK__Empleados__Depar__163A3110" FromRole="Departamentos" ToRole="Empleados" />
+          <NavigationProperty Name="horarios" Relationship="Self.horarios_departamento_id_foreign" FromRole="Departamentos" ToRole="horarios" />
+          <NavigationProperty Name="sub_departamentos" Relationship="Self.sub_departamentos_departamento_id_foreign" FromRole="Departamentos" ToRole="sub_departamentos" />
+        </EntityType>
+        <EntityType Name="dia_festivos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dia" Type="Int32" Nullable="false" />
+          <Property Name="mes" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dias_especiales">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dia" Type="Int32" Nullable="false" />
+          <Property Name="mes" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="empleado_contactos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombres" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="parentesco" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="Empleado_id" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="cedula" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="cedula" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="primer_nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="primer_apellido" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="segundo_nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="segundo_apellido" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_nac" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="lugar_nac" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="edad" Type="Int32" Nullable="false" />
+          <Property Name="nacionalidad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sexo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="estado_civil" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="grupo_sanguineo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="telefono_movil" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="telefono_hab" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="direccion_hab" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="e_mail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_ingreso" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="nombreimagen" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Departamento_id" Type="Int64" Nullable="false" />
+          <Property Name="SubDepartamento_id" Type="Int64" Nullable="false" />
+          <Property Name="Cargo_id" Type="Int64" Nullable="false" />
+          <Property Name="candado_serial" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="inactivo" Type="Boolean" Nullable="false" />
+          <Property Name="usamerulink" Type="Boolean" Nullable="false" />
+          <Property Name="usaHID" Type="Boolean" Nullable="false" />
+          <Property Name="usaLocker" Type="Boolean" Nullable="false" />
+          <Property Name="Locker_id" Type="Int64" Nullable="false" />
+          <Property Name="usatransportemeru" Type="Boolean" Nullable="false" />
+          <Property Name="destino" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Cargos" Relationship="Self.empleados_cargo_id_foreign" FromRole="Empleados" ToRole="Cargos" />
+          <NavigationProperty Name="Cargos1" Relationship="Self.FK__Empleados__Cargo__15460CD7" FromRole="Empleados" ToRole="Cargos" />
+          <NavigationProperty Name="Departamentos" Relationship="Self.empleados_departamento_id_foreign" FromRole="Empleados" ToRole="Departamentos" />
+          <NavigationProperty Name="Departamentos1" Relationship="Self.FK__Empleados__Depar__163A3110" FromRole="Empleados" ToRole="Departamentos" />
+          <NavigationProperty Name="sub_departamentos" Relationship="Self.empleados_subdepartamento_id_foreign" FromRole="Empleados" ToRole="sub_departamentos" />
+          <NavigationProperty Name="sub_departamentos1" Relationship="Self.FK__Empleados__SubDe__172E5549" FromRole="Empleados" ToRole="sub_departamentos" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Usuarios__Emplea__19169DBB" FromRole="Empleados" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="eventos_especiales">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fecha_inicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fecha_fin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="horario_asignar_observaciones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_asignar" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="horarios">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hora_entrada" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hora_salida" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="periodo_descanso" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="periodo_activo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="periodo_total" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="permitir_salida" Type="Boolean" Nullable="false" />
+          <Property Name="remarcaje" Type="Boolean" Nullable="false" />
+          <Property Name="observacion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="disponible" Type="Boolean" Nullable="false" />
+          <Property Name="Departamento_id" Type="Int64" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <Property Name="nocturno" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Departamentos" Relationship="Self.horarios_departamento_id_foreign" FromRole="horarios" ToRole="Departamentos" />
+        </EntityType>
+        <EntityType Name="locker_caballeros">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="disponible" Type="Boolean" Nullable="false" />
+          <Property Name="candadoAsignado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="candado" Relationship="Self.candado_locker_caballero_id_foreign" FromRole="locker_caballeros" ToRole="candado" />
+        </EntityType>
+        <EntityType Name="locker_damas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="disponible" Type="Boolean" Nullable="false" />
+          <Property Name="candadoAsignado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="candado" Relationship="Self.candado_locker_dama_id_foreign" FromRole="locker_damas" ToRole="candado" />
+        </EntityType>
+        <EntityType Name="migrations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="migration" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="batch" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="model_has_permissions">
+          <Key>
+            <PropertyRef Name="permission_id" />
+            <PropertyRef Name="model_type" />
+            <PropertyRef Name="model_id" />
+          </Key>
+          <Property Name="permission_id" Type="Int32" Nullable="false" />
+          <Property Name="model_type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="model_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="permissions" Relationship="Self.model_has_permissions_permission_id_foreign" FromRole="model_has_permissions" ToRole="permissions" />
+        </EntityType>
+        <EntityType Name="model_has_roles">
+          <Key>
+            <PropertyRef Name="role_id" />
+            <PropertyRef Name="model_type" />
+            <PropertyRef Name="model_id" />
+          </Key>
+          <Property Name="role_id" Type="Int32" Nullable="false" />
+          <Property Name="model_type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="model_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="roles" Relationship="Self.model_has_roles_role_id_foreign" FromRole="model_has_roles" ToRole="roles" />
+        </EntityType>
+        <EntityType Name="permisos_descripcion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="permissions_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="permissions" Relationship="Self.permisos_descripcion_permissions_id_foreign" FromRole="permisos_descripcion" ToRole="permissions" />
+        </EntityType>
+        <EntityType Name="permissions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="guard_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="model_has_permissions" Relationship="Self.model_has_permissions_permission_id_foreign" FromRole="permissions" ToRole="model_has_permissions" />
+          <NavigationProperty Name="permisos_descripcion" Relationship="Self.permisos_descripcion_permissions_id_foreign" FromRole="permissions" ToRole="permisos_descripcion" />
+          <NavigationProperty Name="roles" Relationship="Self.role_has_permissions" FromRole="permissions" ToRole="roles" />
+        </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="guard_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="model_has_roles" Relationship="Self.model_has_roles_role_id_foreign" FromRole="roles" ToRole="model_has_roles" />
+          <NavigationProperty Name="permissions" Relationship="Self.role_has_permissions" FromRole="roles" ToRole="permissions" />
+        </EntityType>
+        <EntityType Name="sub_departamentos">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int64" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Departamento_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Departamentos" Relationship="Self.sub_departamentos_departamento_id_foreign" FromRole="sub_departamentos" ToRole="Departamentos" />
+          <NavigationProperty Name="Empleados" Relationship="Self.empleados_subdepartamento_id_foreign" FromRole="sub_departamentos" ToRole="Empleados" />
+          <NavigationProperty Name="Empleados1" Relationship="Self.FK__Empleados__SubDe__172E5549" FromRole="sub_departamentos" ToRole="Empleados" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreusuario" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="remember_token" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <Property Name="prox_inicio" Type="Boolean" Nullable="false" />
+          <Property Name="Empleado_id" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="auditoria_logs" Relationship="Self.auditoria_logs_usuario_id_foreign" FromRole="Usuarios" ToRole="auditoria_logs" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK__Usuarios__Emplea__19169DBB" FromRole="Usuarios" ToRole="Empleados" />
+        </EntityType>
+        <EntityType Name="empleado_horarios">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="codigo_asignar" />
+            <PropertyRef Name="cedula_empleado" />
+            <PropertyRef Name="mes" />
+            <PropertyRef Name="anio" />
+            <PropertyRef Name="quincena" />
+            <PropertyRef Name="asignado" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_asignar" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cedula_empleado" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="anio" Type="Int32" Nullable="false" />
+          <Property Name="quincena" Type="Int32" Nullable="false" />
+          <Property Name="D1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="D2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="D3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="D4" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="D5" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="D6" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="D7" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="D8" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="D9" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="D10" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="D11" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="D12" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="D13" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="D14" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="D15" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="D16" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="asignado" Type="Boolean" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Temp">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="cedula" />
+            <PropertyRef Name="primer_nombre" />
+            <PropertyRef Name="primer_apellido" />
+            <PropertyRef Name="fecha_nac" />
+            <PropertyRef Name="lugar_nac" />
+            <PropertyRef Name="edad" />
+            <PropertyRef Name="nacionalidad" />
+            <PropertyRef Name="sexo" />
+            <PropertyRef Name="estado_civil" />
+            <PropertyRef Name="direccion_hab" />
+            <PropertyRef Name="fecha_ingreso" />
+            <PropertyRef Name="nombreimagen" />
+            <PropertyRef Name="Departamento_id" />
+            <PropertyRef Name="SubDepartamento_id" />
+            <PropertyRef Name="Cargo_id" />
+            <PropertyRef Name="inactivo" />
+            <PropertyRef Name="usamerulink" />
+            <PropertyRef Name="usaHID" />
+            <PropertyRef Name="usaLocker" />
+            <PropertyRef Name="Locker_id" />
+            <PropertyRef Name="usatransportemeru" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="cedula" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="primer_nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="primer_apellido" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="segundo_nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="segundo_apellido" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_nac" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="lugar_nac" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="edad" Type="Int32" Nullable="false" />
+          <Property Name="nacionalidad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sexo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="estado_civil" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="grupo_sanguineo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="telefono_movil" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="telefono_hab" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="direccion_hab" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="e_mail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_ingreso" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="nombreimagen" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Departamento_id" Type="Int64" Nullable="false" />
+          <Property Name="SubDepartamento_id" Type="Int64" Nullable="false" />
+          <Property Name="Cargo_id" Type="Int64" Nullable="false" />
+          <Property Name="candado_serial" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="inactivo" Type="Boolean" Nullable="false" />
+          <Property Name="usamerulink" Type="Boolean" Nullable="false" />
+          <Property Name="usaHID" Type="Boolean" Nullable="false" />
+          <Property Name="usaLocker" Type="Boolean" Nullable="false" />
+          <Property Name="Locker_id" Type="Int64" Nullable="false" />
+          <Property Name="usatransportemeru" Type="Boolean" Nullable="false" />
+          <Property Name="destino" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="auditoria_logs_usuario_id_foreign">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="auditoria_logs" Type="Self.auditoria_logs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="auditoria_logs">
+              <PropertyRef Name="usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="candado_locker_caballero_id_foreign">
+          <End Role="locker_caballeros" Type="Self.locker_caballeros" Multiplicity="1" />
+          <End Role="candado" Type="Self.candado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="locker_caballeros">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="candado">
+              <PropertyRef Name="Locker_Caballero_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="candado_locker_dama_id_foreign">
+          <End Role="locker_damas" Type="Self.locker_damas" Multiplicity="1" />
+          <End Role="candado" Type="Self.candado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="locker_damas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="candado">
+              <PropertyRef Name="Locker_Dama_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cargos_departamento_id_foreign">
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Cargos" Type="Self.Cargos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Cargos">
+              <PropertyRef Name="Departamento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="empleados_cargo_id_foreign">
+          <End Role="Cargos" Type="Self.Cargos" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cargos">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Cargo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleados__Cargo__15460CD7">
+          <End Role="Cargos" Type="Self.Cargos" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cargos">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Cargo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="empleados_departamento_id_foreign">
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Departamento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleados__Depar__163A3110">
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Departamento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="horarios_departamento_id_foreign">
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
+          <End Role="horarios" Type="Self.horarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="horarios">
+              <PropertyRef Name="Departamento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="sub_departamentos_departamento_id_foreign">
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sub_departamentos" Type="Self.sub_departamentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="sub_departamentos">
+              <PropertyRef Name="Departamento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="empleados_subdepartamento_id_foreign">
+          <End Role="sub_departamentos" Type="Self.sub_departamentos" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sub_departamentos">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="SubDepartamento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleados__SubDe__172E5549">
+          <End Role="sub_departamentos" Type="Self.sub_departamentos" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sub_departamentos">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="SubDepartamento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuarios__Emplea__19169DBB">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="cedula" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="Empleado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="model_has_permissions_permission_id_foreign">
+          <End Role="permissions" Type="Self.permissions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="model_has_permissions" Type="Self.model_has_permissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="permissions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="model_has_permissions">
+              <PropertyRef Name="permission_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="model_has_roles_role_id_foreign">
+          <End Role="roles" Type="Self.roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="model_has_roles" Type="Self.model_has_roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="model_has_roles">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="permisos_descripcion_permissions_id_foreign">
+          <End Role="permissions" Type="Self.permissions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="permisos_descripcion" Type="Self.permisos_descripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="permissions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="permisos_descripcion">
+              <PropertyRef Name="permissions_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="role_has_permissions">
+          <End Role="permissions" Type="Self.permissions" Multiplicity="*" />
+          <End Role="roles" Type="Self.roles" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Meru_LinkEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="auditoria_logs" EntityType="Self.auditoria_logs" />
+          <EntitySet Name="candado" EntityType="Self.candado" />
+          <EntitySet Name="Cargos" EntityType="Self.Cargos" />
+          <EntitySet Name="Departamentos" EntityType="Self.Departamentos" />
+          <EntitySet Name="dia_festivos" EntityType="Self.dia_festivos" />
+          <EntitySet Name="dias_especiales" EntityType="Self.dias_especiales" />
+          <EntitySet Name="empleado_contactos" EntityType="Self.empleado_contactos" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" />
+          <EntitySet Name="eventos_especiales" EntityType="Self.eventos_especiales" />
+          <EntitySet Name="horario_asignar_observaciones" EntityType="Self.horario_asignar_observaciones" />
+          <EntitySet Name="horarios" EntityType="Self.horarios" />
+          <EntitySet Name="locker_caballeros" EntityType="Self.locker_caballeros" />
+          <EntitySet Name="locker_damas" EntityType="Self.locker_damas" />
+          <EntitySet Name="migrations" EntityType="Self.migrations" />
+          <EntitySet Name="model_has_permissions" EntityType="Self.model_has_permissions" />
+          <EntitySet Name="model_has_roles" EntityType="Self.model_has_roles" />
+          <EntitySet Name="permisos_descripcion" EntityType="Self.permisos_descripcion" />
+          <EntitySet Name="permissions" EntityType="Self.permissions" />
+          <EntitySet Name="roles" EntityType="Self.roles" />
+          <EntitySet Name="sub_departamentos" EntityType="Self.sub_departamentos" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <EntitySet Name="empleado_horarios" EntityType="Self.empleado_horarios" />
+          <EntitySet Name="Temp" EntityType="Self.Temp" />
+          <AssociationSet Name="auditoria_logs_usuario_id_foreign" Association="Self.auditoria_logs_usuario_id_foreign">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="auditoria_logs" EntitySet="auditoria_logs" />
+          </AssociationSet>
+          <AssociationSet Name="candado_locker_caballero_id_foreign" Association="Self.candado_locker_caballero_id_foreign">
+            <End Role="locker_caballeros" EntitySet="locker_caballeros" />
+            <End Role="candado" EntitySet="candado" />
+          </AssociationSet>
+          <AssociationSet Name="candado_locker_dama_id_foreign" Association="Self.candado_locker_dama_id_foreign">
+            <End Role="locker_damas" EntitySet="locker_damas" />
+            <End Role="candado" EntitySet="candado" />
+          </AssociationSet>
+          <AssociationSet Name="cargos_departamento_id_foreign" Association="Self.cargos_departamento_id_foreign">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="Cargos" EntitySet="Cargos" />
+          </AssociationSet>
+          <AssociationSet Name="empleados_cargo_id_foreign" Association="Self.empleados_cargo_id_foreign">
+            <End Role="Cargos" EntitySet="Cargos" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleados__Cargo__15460CD7" Association="Self.FK__Empleados__Cargo__15460CD7">
+            <End Role="Cargos" EntitySet="Cargos" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="empleados_departamento_id_foreign" Association="Self.empleados_departamento_id_foreign">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleados__Depar__163A3110" Association="Self.FK__Empleados__Depar__163A3110">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="horarios_departamento_id_foreign" Association="Self.horarios_departamento_id_foreign">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="horarios" EntitySet="horarios" />
+          </AssociationSet>
+          <AssociationSet Name="sub_departamentos_departamento_id_foreign" Association="Self.sub_departamentos_departamento_id_foreign">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="sub_departamentos" EntitySet="sub_departamentos" />
+          </AssociationSet>
+          <AssociationSet Name="empleados_subdepartamento_id_foreign" Association="Self.empleados_subdepartamento_id_foreign">
+            <End Role="sub_departamentos" EntitySet="sub_departamentos" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleados__SubDe__172E5549" Association="Self.FK__Empleados__SubDe__172E5549">
+            <End Role="sub_departamentos" EntitySet="sub_departamentos" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__Emplea__19169DBB" Association="Self.FK__Usuarios__Emplea__19169DBB">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="model_has_permissions_permission_id_foreign" Association="Self.model_has_permissions_permission_id_foreign">
+            <End Role="permissions" EntitySet="permissions" />
+            <End Role="model_has_permissions" EntitySet="model_has_permissions" />
+          </AssociationSet>
+          <AssociationSet Name="model_has_roles_role_id_foreign" Association="Self.model_has_roles_role_id_foreign">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="model_has_roles" EntitySet="model_has_roles" />
+          </AssociationSet>
+          <AssociationSet Name="permisos_descripcion_permissions_id_foreign" Association="Self.permisos_descripcion_permissions_id_foreign">
+            <End Role="permissions" EntitySet="permissions" />
+            <End Role="permisos_descripcion" EntitySet="permisos_descripcion" />
+          </AssociationSet>
+          <AssociationSet Name="role_has_permissions" Association="Self.role_has_permissions">
+            <End Role="permissions" EntitySet="permissions" />
+            <End Role="roles" EntitySet="roles" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Meru_LinkModelStoreContainer" CdmEntityContainer="Meru_LinkEntities">
+          <EntitySetMapping Name="auditoria_logs">
+            <EntityTypeMapping TypeName="Meru_LinkModel.auditoria_logs">
+              <MappingFragment StoreEntitySet="auditoria_logs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="ruta" ColumnName="ruta" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="candado">
+            <EntityTypeMapping TypeName="Meru_LinkModel.candado">
+              <MappingFragment StoreEntitySet="candado">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="serial" ColumnName="serial" />
+                <ScalarProperty Name="combinacion" ColumnName="combinacion" />
+                <ScalarProperty Name="disponible" ColumnName="disponible" />
+                <ScalarProperty Name="Locker_Caballero_id" ColumnName="Locker_Caballero_id" />
+                <ScalarProperty Name="Locker_Dama_id" ColumnName="Locker_Dama_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cargos">
+            <EntityTypeMapping TypeName="Meru_LinkModel.Cargos">
+              <MappingFragment StoreEntitySet="Cargos">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="Departamento_id" ColumnName="Departamento_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamentos">
+            <EntityTypeMapping TypeName="Meru_LinkModel.Departamentos">
+              <MappingFragment StoreEntitySet="Departamentos">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dia_festivos">
+            <EntityTypeMapping TypeName="Meru_LinkModel.dia_festivos">
+              <MappingFragment StoreEntitySet="dia_festivos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="dia" ColumnName="dia" />
+                <ScalarProperty Name="mes" ColumnName="mes" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dias_especiales">
+            <EntityTypeMapping TypeName="Meru_LinkModel.dias_especiales">
+              <MappingFragment StoreEntitySet="dias_especiales">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="dia" ColumnName="dia" />
+                <ScalarProperty Name="mes" ColumnName="mes" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="empleado_contactos">
+            <EntityTypeMapping TypeName="Meru_LinkModel.empleado_contactos">
+              <MappingFragment StoreEntitySet="empleado_contactos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="parentesco" ColumnName="parentesco" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Empleado_id" ColumnName="Empleado_id" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleados">
+            <EntityTypeMapping TypeName="Meru_LinkModel.Empleados">
+              <MappingFragment StoreEntitySet="Empleados">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="primer_nombre" ColumnName="primer_nombre" />
+                <ScalarProperty Name="primer_apellido" ColumnName="primer_apellido" />
+                <ScalarProperty Name="segundo_nombre" ColumnName="segundo_nombre" />
+                <ScalarProperty Name="segundo_apellido" ColumnName="segundo_apellido" />
+                <ScalarProperty Name="fecha_nac" ColumnName="fecha_nac" />
+                <ScalarProperty Name="lugar_nac" ColumnName="lugar_nac" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="nacionalidad" ColumnName="nacionalidad" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="estado_civil" ColumnName="estado_civil" />
+                <ScalarProperty Name="grupo_sanguineo" ColumnName="grupo_sanguineo" />
+                <ScalarProperty Name="telefono_movil" ColumnName="telefono_movil" />
+                <ScalarProperty Name="telefono_hab" ColumnName="telefono_hab" />
+                <ScalarProperty Name="direccion_hab" ColumnName="direccion_hab" />
+                <ScalarProperty Name="e_mail" ColumnName="e_mail" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="nombreimagen" ColumnName="nombreimagen" />
+                <ScalarProperty Name="Departamento_id" ColumnName="Departamento_id" />
+                <ScalarProperty Name="SubDepartamento_id" ColumnName="SubDepartamento_id" />
+                <ScalarProperty Name="Cargo_id" ColumnName="Cargo_id" />
+                <ScalarProperty Name="candado_serial" ColumnName="candado_serial" />
+                <ScalarProperty Name="inactivo" ColumnName="inactivo" />
+                <ScalarProperty Name="usamerulink" ColumnName="usamerulink" />
+                <ScalarProperty Name="usaHID" ColumnName="usaHID" />
+                <ScalarProperty Name="usaLocker" ColumnName="usaLocker" />
+                <ScalarProperty Name="Locker_id" ColumnName="Locker_id" />
+                <ScalarProperty Name="usatransportemeru" ColumnName="usatransportemeru" />
+                <ScalarProperty Name="destino" ColumnName="destino" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eventos_especiales">
+            <EntityTypeMapping TypeName="Meru_LinkModel.eventos_especiales">
+              <MappingFragment StoreEntitySet="eventos_especiales">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="horario_asignar_observaciones">
+            <EntityTypeMapping TypeName="Meru_LinkModel.horario_asignar_observaciones">
+              <MappingFragment StoreEntitySet="horario_asignar_observaciones">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigo_asignar" ColumnName="codigo_asignar" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="horarios">
+            <EntityTypeMapping TypeName="Meru_LinkModel.horarios">
+              <MappingFragment StoreEntitySet="horarios">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="hora_entrada" ColumnName="hora_entrada" />
+                <ScalarProperty Name="hora_salida" ColumnName="hora_salida" />
+                <ScalarProperty Name="periodo_descanso" ColumnName="periodo_descanso" />
+                <ScalarProperty Name="periodo_activo" ColumnName="periodo_activo" />
+                <ScalarProperty Name="periodo_total" ColumnName="periodo_total" />
+                <ScalarProperty Name="permitir_salida" ColumnName="permitir_salida" />
+                <ScalarProperty Name="remarcaje" ColumnName="remarcaje" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="disponible" ColumnName="disponible" />
+                <ScalarProperty Name="Departamento_id" ColumnName="Departamento_id" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="nocturno" ColumnName="nocturno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="locker_caballeros">
+            <EntityTypeMapping TypeName="Meru_LinkModel.locker_caballeros">
+              <MappingFragment StoreEntitySet="locker_caballeros">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="disponible" ColumnName="disponible" />
+                <ScalarProperty Name="candadoAsignado" ColumnName="candadoAsignado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="locker_damas">
+            <EntityTypeMapping TypeName="Meru_LinkModel.locker_damas">
+              <MappingFragment StoreEntitySet="locker_damas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="disponible" ColumnName="disponible" />
+                <ScalarProperty Name="candadoAsignado" ColumnName="candadoAsignado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="migrations">
+            <EntityTypeMapping TypeName="Meru_LinkModel.migrations">
+              <MappingFragment StoreEntitySet="migrations">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="migration" ColumnName="migration" />
+                <ScalarProperty Name="batch" ColumnName="batch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="model_has_permissions">
+            <EntityTypeMapping TypeName="Meru_LinkModel.model_has_permissions">
+              <MappingFragment StoreEntitySet="model_has_permissions">
+                <ScalarProperty Name="permission_id" ColumnName="permission_id" />
+                <ScalarProperty Name="model_type" ColumnName="model_type" />
+                <ScalarProperty Name="model_id" ColumnName="model_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="model_has_roles">
+            <EntityTypeMapping TypeName="Meru_LinkModel.model_has_roles">
+              <MappingFragment StoreEntitySet="model_has_roles">
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="model_type" ColumnName="model_type" />
+                <ScalarProperty Name="model_id" ColumnName="model_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="permisos_descripcion">
+            <EntityTypeMapping TypeName="Meru_LinkModel.permisos_descripcion">
+              <MappingFragment StoreEntitySet="permisos_descripcion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="permissions_id" ColumnName="permissions_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="permissions">
+            <EntityTypeMapping TypeName="Meru_LinkModel.permissions">
+              <MappingFragment StoreEntitySet="permissions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="guard_name" ColumnName="guard_name" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roles">
+            <EntityTypeMapping TypeName="Meru_LinkModel.roles">
+              <MappingFragment StoreEntitySet="roles">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="guard_name" ColumnName="guard_name" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sub_departamentos">
+            <EntityTypeMapping TypeName="Meru_LinkModel.sub_departamentos">
+              <MappingFragment StoreEntitySet="sub_departamentos">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Departamento_id" ColumnName="Departamento_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Meru_LinkModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="Meru_LinkModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombreusuario" ColumnName="nombreusuario" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="remember_token" ColumnName="remember_token" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="prox_inicio" ColumnName="prox_inicio" />
+                <ScalarProperty Name="Empleado_id" ColumnName="Empleado_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="empleado_horarios">
+            <EntityTypeMapping TypeName="Meru_LinkModel.empleado_horarios">
+              <MappingFragment StoreEntitySet="empleado_horarios">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigo_asignar" ColumnName="codigo_asignar" />
+                <ScalarProperty Name="cedula_empleado" ColumnName="cedula_empleado" />
+                <ScalarProperty Name="mes" ColumnName="mes" />
+                <ScalarProperty Name="anio" ColumnName="anio" />
+                <ScalarProperty Name="quincena" ColumnName="quincena" />
+                <ScalarProperty Name="D1" ColumnName="D1" />
+                <ScalarProperty Name="D2" ColumnName="D2" />
+                <ScalarProperty Name="D3" ColumnName="D3" />
+                <ScalarProperty Name="D4" ColumnName="D4" />
+                <ScalarProperty Name="D5" ColumnName="D5" />
+                <ScalarProperty Name="D6" ColumnName="D6" />
+                <ScalarProperty Name="D7" ColumnName="D7" />
+                <ScalarProperty Name="D8" ColumnName="D8" />
+                <ScalarProperty Name="D9" ColumnName="D9" />
+                <ScalarProperty Name="D10" ColumnName="D10" />
+                <ScalarProperty Name="D11" ColumnName="D11" />
+                <ScalarProperty Name="D12" ColumnName="D12" />
+                <ScalarProperty Name="D13" ColumnName="D13" />
+                <ScalarProperty Name="D14" ColumnName="D14" />
+                <ScalarProperty Name="D15" ColumnName="D15" />
+                <ScalarProperty Name="D16" ColumnName="D16" />
+                <ScalarProperty Name="asignado" ColumnName="asignado" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Temp">
+            <EntityTypeMapping TypeName="Meru_LinkModel.Temp">
+              <MappingFragment StoreEntitySet="Temp">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="primer_nombre" ColumnName="primer_nombre" />
+                <ScalarProperty Name="primer_apellido" ColumnName="primer_apellido" />
+                <ScalarProperty Name="segundo_nombre" ColumnName="segundo_nombre" />
+                <ScalarProperty Name="segundo_apellido" ColumnName="segundo_apellido" />
+                <ScalarProperty Name="fecha_nac" ColumnName="fecha_nac" />
+                <ScalarProperty Name="lugar_nac" ColumnName="lugar_nac" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="nacionalidad" ColumnName="nacionalidad" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="estado_civil" ColumnName="estado_civil" />
+                <ScalarProperty Name="grupo_sanguineo" ColumnName="grupo_sanguineo" />
+                <ScalarProperty Name="telefono_movil" ColumnName="telefono_movil" />
+                <ScalarProperty Name="telefono_hab" ColumnName="telefono_hab" />
+                <ScalarProperty Name="direccion_hab" ColumnName="direccion_hab" />
+                <ScalarProperty Name="e_mail" ColumnName="e_mail" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="nombreimagen" ColumnName="nombreimagen" />
+                <ScalarProperty Name="Departamento_id" ColumnName="Departamento_id" />
+                <ScalarProperty Name="SubDepartamento_id" ColumnName="SubDepartamento_id" />
+                <ScalarProperty Name="Cargo_id" ColumnName="Cargo_id" />
+                <ScalarProperty Name="candado_serial" ColumnName="candado_serial" />
+                <ScalarProperty Name="inactivo" ColumnName="inactivo" />
+                <ScalarProperty Name="usamerulink" ColumnName="usamerulink" />
+                <ScalarProperty Name="usaHID" ColumnName="usaHID" />
+                <ScalarProperty Name="usaLocker" ColumnName="usaLocker" />
+                <ScalarProperty Name="Locker_id" ColumnName="Locker_id" />
+                <ScalarProperty Name="usatransportemeru" ColumnName="usatransportemeru" />
+                <ScalarProperty Name="destino" ColumnName="destino" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="role_has_permissions" TypeName="Meru_LinkModel.role_has_permissions" StoreEntitySet="role_has_permissions">
+            <EndProperty Name="permissions">
+              <ScalarProperty Name="id" ColumnName="permission_id" />
+            </EndProperty>
+            <EndProperty Name="roles">
+              <ScalarProperty Name="id" ColumnName="role_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Meru_LinkModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Meru_LinkModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Meru_LinkModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Meru_LinkModel.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Meru_LinkModel.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Meru_LinkModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Meru_LinkModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
