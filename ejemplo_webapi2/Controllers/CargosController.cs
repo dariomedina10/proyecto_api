@@ -26,7 +26,7 @@ namespace ejemplo_webapi2.Controllers
         }
 
         [HttpGet]
-
+        //hecho por dario medina
         public Cargos Get(int id) {
 
             //using (Meru_LinkEntities db = new Meru_LinkEntities())
