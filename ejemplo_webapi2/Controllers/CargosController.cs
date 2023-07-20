@@ -21,7 +21,7 @@ namespace ejemplo_webapi2.Controllers
            // using (Meru_LinkEntities db = new Meru_LinkEntities()) 
             {
                 return db.Cargos.ToList();    
-
+                
             }
         }
 
