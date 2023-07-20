@@ -13,12 +13,12 @@ namespace ejemplo_webapi2.Controllers
     public class CargosController : ApiController
     {
         private Meru_LinkEntities Context = new Meru_LinkEntities();
-        private Meru_LinkEntities db = new Meru_LinkEntities();
+   //     private Meru_LinkEntities db = new Meru_LinkEntities();
 
         [HttpGet]
         public IEnumerable<Cargos> Get()
         {
-           // using (Meru_LinkEntities db = new Meru_LinkEntities()) 
+            using (Meru_LinkEntities db = new Meru_LinkEntities()) 
             {
                 return db.Cargos.ToList();    
                 
@@ -29,7 +29,7 @@ namespace ejemplo_webapi2.Controllers
         //hecho por dario medina
         public Cargos Get(int id) {
 
-            //using (Meru_LinkEntities db = new Meru_LinkEntities())
+            using (Meru_LinkEntities db = new Meru_LinkEntities())
             {
                 return db.Cargos.FirstOrDefault(x => x.Departamento_id ==id);
 
