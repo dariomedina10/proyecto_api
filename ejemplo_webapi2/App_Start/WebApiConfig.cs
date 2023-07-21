@@ -10,8 +10,10 @@ namespace ejemplo_webapi2
         public static void Register(HttpConfiguration config)
         {
             // Configuración y servicios de Web API
-
             // Rutas de Web API
+            var json = config.Formatters.JsonFormatter;
+            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            config.Formatters.Remove (config.Formatters.XmlFormatter);
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
