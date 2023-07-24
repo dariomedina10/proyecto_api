@@ -11,7 +11,8 @@ namespace Datos
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
     public partial class Cargos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,10 +23,14 @@ namespace Datos
         }
     
         public long codigo { get; set; }
+        [DataMember]
         public string nombre { get; set; }
+        [DataMember]
         public string descripcion { get; set; }
+        [DataMember]
         public long Departamento_id { get; set; }
-    
+        [DataMember]
+
         public virtual Departamentos Departamentos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Empleados> Empleados { get; set; }

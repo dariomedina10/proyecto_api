@@ -18,6 +18,7 @@ namespace Datos
     public partial class Meru_LinkEntities : DbContext
     {
         public Meru_LinkEntities()
+            
             : base("name=Meru_LinkEntities")
         {
         }

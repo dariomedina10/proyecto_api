@@ -1,5 +1,6 @@
 ﻿using Datos;
 using Microsoft.Ajax.Utilities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -20,6 +21,8 @@ namespace ejemplo_webapi2.Controllers
         {
             using (Meru_LinkEntities db = new Meru_LinkEntities()) 
             {
+               // var userJson = JsonSerializer.Serialize<User>(user);
+
                 return db.Cargos.ToList();    
                 
             }
